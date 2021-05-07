@@ -2,8 +2,8 @@
 <div class="downer">
   <div class="downer__column">
     <br>
-    <h1>ООО “СТА”</h1>
-    <h3>Мы делаем бизнес современнее</h3>
+    <h1>ITMO Team search</h1>
+    <h3>Ищите команду проще</h3>
   </div>
   <div class="downer__column">
     <br>
@@ -11,11 +11,9 @@
     <br>
     <a href="#">Личный кабинет</a>
     <br>
-    <a href="#">Карта</a>
+    <a href="#">Регистрация</a>
     <br>
-    <a href="#">Склад</a>
-    <br>
-    <a href="#">Видео поток</a>
+    <a href="#">Выход</a>
   </div>
   <div class="downer__column">
     <br>
@@ -60,6 +58,7 @@ h1,h2,h3 {
   width: 100%;
   display: table;
   z-index: 1;
+  font-family: Roboto;
 }
 .downer__column {
 

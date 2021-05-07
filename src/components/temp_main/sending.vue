@@ -3,51 +3,49 @@
         <div class="sending_table">
             <table>
                 <tr>
-
                     <td>
-
                         <select>
-                            <option label="Расположение" value="1" disabled selected>Господин Электроник</option>
-                            <option>Москва</option>
-                            <option>Санкт-Петербург</option>
-                            <option>Пермь</option>
+                            <option label="Tag" value="1" disabled selected></option>
+                            <option>Programming</option>
+                            <option>Science</option>
+                            <option>Education</option>
                         </select>
                     <td>
 
                         <select>
-                            <option label="Название организации" value="1" disabled selected>Господин Электроник
+                            <option label="Creation data" value="1" disabled selected>today
                             </option>
-                            <option>ИТМО</option>
-                            <option>СПБГУ</option>
-                            <option>Политех</option>
+                            <option>Раньше</option>
+                            <option>Позже</option>
+                            <option>Все</option>
                         </select>
                     </td>
 
                     <td>
 
                         <select>
-                            <option label="Размеры вашего склада" value="1" disabled selected>Господин Электроник
+                            <option label="members" value="1" disabled selected>количество участников
                             </option>
-                            <option>Маленький</option>
-                            <option>Большой</option>
-                            <option>Really big</option>
+                            <option>2</option>
+                            <option>4</option>
+                            <option>>4</option>
                         </select>
                     </td>
-                    <td>
+<!--                    <td>-->
 
-                        <select>
-                            <option label="Как с вами связаться" value="1" disabled selected>Господин Электроник
-                            </option>
-                            <option>Факс</option>
-                            <option>Почта</option>
-                            <option>Звонок</option>
-                        </select>
-                    </td>
+<!--                        <select>-->
+<!--                            <option label="Как с вами связаться" value="1" disabled selected>Господин Электроник-->
+<!--                            </option>-->
+<!--                            <option>Факс</option>-->
+<!--                            <option>Почта</option>-->
+<!--                            <option>Звонок</option>-->
+<!--                        </select>-->
+<!--                    </td>-->
 
                     <td>
                         <button style="width: 155px; height: 42px;border-color: white;
-                          border-radius: 8px; background-color: dodgerblue; font-weight: normal;color: white;font-family:  'Arial';outline: 0 none !important;box-shadow: white">
-                            Отправить
+                          border-radius: 8px; background-color: rgb(255,255,255);font-weight: normal;color: black; font-family:  'Roboto';outline: 0 none !important;box-shadow: red">
+                            Поиск
                         </button>
                     </td>
                 </tr>
@@ -67,25 +65,35 @@
 <style scoped>
     .sending_table {
         position: absolute;
-        margin-left: 100px;
+        margin-left: 5px;
 
     }
 
     select {
         border-color: white;
-        font-size: 120%;
+        border-radius: 8px;
+        font-size: 25px;
+        font-family: Roboto;
+        text-align: center;
         width: 100%;
         outline: 0 none !important;
     }
 
     TD, TR {
-        padding-left: 50px;
+        padding-top: 5px;
+        padding-left: 70px;
         outline: 0 none !important;
+        margin-bottom: 10px;
     }
 
     .sending {
-        background: white;
+
+        height: 60px;
+
+        position: center;
+        background: rgb(25, 132, 189);
         outline: 0 none !important;
+        margin-bottom: 40px;
     }
 
 </style>

@@ -1,15 +1,9 @@
 <template>
  <div>
    <upper/>
-   <info/>
-   <sending/>
-   <about/>
-   <cons/>
-   <stand/>
-   <how/>
-   <team/>
-   <phrase/>
-   <callback/>
+     <sending/>
+     <post/>
+     <post/>
    <downer/>
  </div>
 </template>
@@ -26,11 +20,13 @@ import team from "@/components/temp_main/team";
 import phrase from "@/components/temp_main/phrase";
 import callback from "@/components/temp_main/callback";
 import downer from "@/components/temp_main/downer";
+import Post from "./temp_main/post";
 
 export default {
   name: 'page',
   props: [],
   components: {
+      Post,
     upper,
     info,
     about,

@@ -1,5 +1,5 @@
 <template>
-    <div class="lk" v-if="isAvailable">
+    <div class="lk" v-if="isAvailable=true">
         <upper/>
         <div class="right"><h1>Личный кабинет сотрудника</h1></div>
         <div class="rightt">
@@ -12,7 +12,6 @@
         <button title="Связаться со мной" class="btn__more">Связаться со мной</button>
         <button title="Удалить пользователя" class="btn__more two">Удалить пользователя</button>
         <downer/>
-
     </div>
   <div v-else>
     <upper/>
