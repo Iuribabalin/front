@@ -1,70 +1,44 @@
 <template>
     <div>
-        <div style="margin-left: 450px; margin-top: 50px; position:center">
+        <div style="margin-left: 30px; margin-top: 50px; position:center">
 
 
             <table>
                 <td>
                     <tr>
-                        <button class="input_11 b">Рассчитать</button>
+                        <input class="input_11" type="text" placeholder="Имя" title="почта" size="5">
                     </tr>
                     <tr>
-                        <input class="input_11" type="text" placeholder="Время на операцию" title="почта" size="5">
+                        <input class="input_11" type="text" placeholder="Фамилия" title="почта" size="5">
                     </tr>
                     <tr>
-                        <input class="input_11" type="text" placeholder="Оптимальное Расположение" title="почта"
-                               size="5">
+                        <input class="input_11" type="text" placeholder="Учебная группа" title="почта" size="5">
                     </tr>
-                    <tr>
-                        <input class="input_11" type="text" placeholder="Сгруппировать товары  на складе по типу"
-                               title="почта" size="5">
-                    </tr>
-                    <tr>
-                        <input class="input_11" type="text" placeholder="Сгруппировать товары  на складе по отгрузке"
-                               title="почта" size="5">
-                    </tr>
-                    <tr>
-                        <input class="input_11" type="text" placeholder="Занимемое место" title="почта" size="5">
-                    </tr>
-                    <tr>
-                        <input class="input_11" type="text" placeholder="Свободное место" title="почта" size="5">
-                    </tr>
+
                 </td>
                 <td>
-                    <tr>
-                        <button class="input_11 b s">Открыть базу данных склада</button>
-                    </tr>
-                    <tr>
-                        <input class="input_11 b s" type="text" placeholder="Сортировка" title="почта" size="5">
-                    </tr>
-                    <tr>
-                        <input class="input_11 s" type="text" placeholder="Количество" title="почта" size="5">
-                    </tr>
-                    <tr>
-                        <input class="input_11 s" type="text" placeholder="Тип" title="почта" size="5">
-                    </tr>
-                    <tr>
-                        <input class="input_11 s" type="text" placeholder="Расположение" title="почта" size="5">
-                    </tr>
+
                 </td>
 
             </table>
             <div>
                 <button style="background-color: #0dabf5; width: 250px; height: 55px;margin-bottom:100px; margin-top:30px;border-radius: 7px;outline: 0 none !important;color: white;font-family: 'Arial';font-size: 20px; border-color: white">
-                    Выгрузить отчет
+                    Сохранить личные данные
                 </button>
 
+
             </div>
+            <div><input type="file" id="file" ref="file" v-on:change="handleFileUpload()" />
+
             <div>
-              <input type="file" id="file" ref="file" v-on:change="handleFileUpload()" />
-              <button v-on:click="submitFile()" style="background-color: #0dabf5; width: 250px; height: 55px;margin-bottom:100px; margin-top:30px;border-radius: 7px;outline: 0 none !important;color: white;font-family: 'Arial';font-size: 20px; border-color: white">
-                Загрузить данные
-              </button>
+                <button v-on:click="submitFile()" style="background-color: #0dabf5; width: 250px; height: 55px;margin-bottom:100px; margin-top:30px;border-radius: 7px;outline: 0 none !important;color: white;font-family: 'Arial';font-size: 20px; border-color: white">
+                    Загрузить фото
+                </button></div>
               <br>
-              <input class="input_11 s" type="text" placeholder="Введите название файла (с расширением)" title="почта" size="5" v-model="name" style="margin-left: 0;margin-right: 10px">
-              <button @click="download()" style="background-color: #0dabf5; width: 250px; height: 55px;margin-bottom:100px; margin-top:30px;border-radius: 7px;outline: 0 none !important;color: white;font-family: 'Arial';font-size: 20px; border-color: white">
-                Получить данные
-              </button>
+<!--              <input class="input_11 s" type="text" placeholder="Введите название файла (с расширением)" title="почта" size="5" v-model="name" style="margin-left: 0;margin-right: 10px">-->
+<!--              <button @click="download()" style="background-color: #0dabf5; width: 250px; height: 55px;margin-bottom:100px; margin-top:30px;border-radius: 7px;outline: 0 none !important;color: white;font-family: 'Arial';font-size: 20px; border-color: white">-->
+<!--                Получить данные-->
+<!--              </button>-->
             </div>
         </div>
     </div>

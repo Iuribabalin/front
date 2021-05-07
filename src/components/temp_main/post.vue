@@ -39,10 +39,11 @@
     margin-bottom: 30px;
     width:800px ;
     max-height: 600px;
+
     background-color: white;
-    border-radius: 30px;
+    border-radius: 10px;
     position: relative;
-    box-shadow: 2px 2px rgb(25, 132, 189);
+    box-shadow: 2px 2px 1px 1px rgb(5, 13, 17);
 
 }
 .head{

@@ -43,8 +43,8 @@
 <!--                    </td>-->
 
                     <td>
-                        <button style="width: 155px; height: 42px;border-color: white;
-                          border-radius: 8px; background-color: rgb(255,255,255);font-weight: normal;color: black; font-family:  'Roboto';outline: 0 none !important;box-shadow: red">
+                        <button style="width: 150px; height: 35px;border-color: white;
+                          border-radius: 5px; background-color: rgb(255,255,255);font-weight: normal;color: black; font-family:  'Roboto';outline: 0 none !important;box-shadow: red; margin-left: 550%;">
                             Поиск
                         </button>
                     </td>
@@ -71,8 +71,8 @@
 
     select {
         border-color: white;
-        border-radius: 8px;
-        font-size: 25px;
+        border-radius: 4px;
+        font-size: 20px;
         font-family: Roboto;
         text-align: center;
         width: 100%;
@@ -80,10 +80,10 @@
     }
 
     TD, TR {
-        padding-top: 5px;
-        padding-left: 70px;
+        padding-top: 10px;
+        padding-left: 30px;
         outline: 0 none !important;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     .sending {
@@ -91,9 +91,10 @@
         height: 60px;
 
         position: center;
-        background: rgb(25, 132, 189);
+        background: rgb(13, 48, 66);
         outline: 0 none !important;
         margin-bottom: 40px;
+        margin-left: -10px;
     }
 
 </style>

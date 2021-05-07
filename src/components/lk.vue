@@ -3,14 +3,17 @@
         <upper/>
         <div class="right"><h1>Личный кабинет сотрудника</h1></div>
         <div class="rightt">
-            <input type="tel" placeholder="ПОИСК СОТРУДНИКОВ" title="номер" class="input__more">
+            <input type="tel" placeholder="ПОИСК ПОЛЬЗОВАТЕЛЕЙ" title="номер" class="input__more">
         </div>
         <user/>
-        <textarea class="lk__textarea">Краткое описание деятельности: Ведущий разработчик ПО на предприятии. Стек моих технологий: - Блаблабла - Блаблабла - Блаблабла степени Спасибо, что посетили мою страницу. Если у вас есть ко мне вопросы, напишите в персональный чат.</textarea>
-        <textarea class="lk__textarea2">История действий пользователя в системе: - 10:00 01.01.2020: Перемещение груза из ячейки в ячейку - 10:00 01.01.2020: Принудительная отправка груза id1111111111 на отгрузку //// .......</textarea>
+        <inputs style="margin-left: 30px;"/>
+        <textarea class="lk__textarea">Краткое описание деятельности: Пишу сайты,
+            Стек моих технологий: - Блаблабла - Блаблабла - Блаблабла степени Спасибо, что посетили мою страницу. Если у вас есть ко мне вопросы, напишите в персональный чат.</textarea>
+
+
         <div class="clear"></div>
-        <button title="Связаться со мной" class="btn__more">Связаться со мной</button>
-        <button title="Удалить пользователя" class="btn__more two">Удалить пользователя</button>
+        <button title="Данные" class="btn__more">"Эта кнопка что то делает"</button>
+        <button title="Удалить пользователя" class="btn__more two">Удалить аккаунт</button>
         <downer/>
     </div>
   <div v-else>
@@ -28,13 +31,16 @@
     import user from "@/components/temp_lk/user";
     import upper from "@/components/temp_main/upper";
     import downer from "@/components/temp_main/downer";
+    import Inputs from "./temp_sklad/inputs";
 
     export default {
         name: "lk",
         components: {
+            Inputs,
             user,
             upper,
             downer,
+
         },
       computed: {
         isAvailable: function () {
