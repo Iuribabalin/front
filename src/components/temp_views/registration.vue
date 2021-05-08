@@ -7,7 +7,6 @@
 <script>
 
 import startup from '@/components/startup'
-import hat from '@/components/temp_startup/hat'
 
 export default {
   name: 'registration',

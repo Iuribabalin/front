@@ -4,7 +4,8 @@
 
       <div class="header__inner">
 
-          <img src="@/assets/itmo.png" alt="полки" class="i" style="width: 20%; margin-left: 10px"   >
+<!--          <img src="@/assets/itmo.png" alt="полки" class="i" style="width: 20%; margin-left: 10px"   >-->
+          <h1 style="font-size: 40px; font-family: Roboto; font-weight: bold" >ITMO Team search</h1>
     <nav class="nav">
       <a class="nav__link" :class=" this.$route.name === 'main-page' ? 'active' : ''" @click="goTo('main')">Главная</a>
       <a class="nav__link" :class=" this.$route.name === 'lk-page' ? 'active' : ''" @click="goTo('lk')">Личный кабинет</a>
@@ -106,7 +107,9 @@ export default {
 
 <style>
 @import "../../assets/css/style.css";
-
+.header{
+  margin-top: -30px;
+}
 a{
   cursor: pointer;
 }
@@ -116,11 +119,17 @@ svg {
 }
 
 h1,h2,h3 {
-  margin: 0 0 0 50px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 50px;
+  margin-bottom: 0;
 }
 
 .header__logo {
-  margin: 0 0 0 40px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-left: 40px;
+  margin-bottom: 0;
 }
 
 </style>

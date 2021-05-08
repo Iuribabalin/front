@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import page from '@/components/page'
+import page from "../temp_main/page";
 
 export default {
   name: 'page_container',
@@ -43,14 +43,6 @@ export default {
   font-weight: normal;
 }
 
-#wrap {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #efefef;
-  margin: 0 auto;
-  padding: 0;
-}
 
 @media only all and (min-width: 1256px) {
   #wrap {

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import startup from '@/components/startup'
+import startup from "./startup";
 
 export default {
   name: 'registration_container',

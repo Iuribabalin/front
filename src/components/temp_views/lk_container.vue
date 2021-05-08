@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import lk from "@/components/lk";
+import lk from "../temp_lk/lk";
 
 export default {
   name: 'lk_container',
