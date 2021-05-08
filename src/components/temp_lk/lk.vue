@@ -1,27 +1,46 @@
 <template>
-    <div class="lk" v-if="isAvailable=true">
+    <div class="lk">
         <upper/>
+        <img src="@/assets/icon2.png" class="imageicon3">
         <div class="right"><h1>Личный кабинет</h1></div>
-        <div class="rightt">
-            <input type="tel" placeholder="ПОИСК ПОЛЬЗОВАТЕЛЕЙ" title="номер" class="input__more">
-        </div>
-        <inputs style="margin-left: 30px;"/>
-        <textarea class="lk__textarea">Краткое описание деятельности: Пишу сайты,
-            Стек моих технологий: - Блаблабла - Блаблабла - Блаблабла степени Спасибо, что посетили мою страницу. Если у вас есть ко мне вопросы, напишите в персональный чат.</textarea>
+        <div style="margin-left: 20px; width: 550px; margin-top: 100px; position:absolute;">
 
-        <button title="Данные" class="btn__more">"Эта кнопка что то делает"</button>
-        <button title="Удалить пользователя" class="btn__more two">Удалить аккаунт</button>
+                <div >
+                    <table>
+                        <tr>
+                            <th><label for="text-input">___ Имя ___    </label>
+                                <input class="input" id="text-input" type="text" /></th>
+                            <th><label for="date-input">Дата рождения</label>
+                                <input class="input" id="date-input" type="date" /></th>
+                        </tr>
+                        <tr>
+                            <th><label for="text-input">Фамилия</label>
+                                <input class="input" id="text-input2" type="text" /></th>
+                            <th> <label for="readonly-input">__Email__</label>
+                                <input class="input" id="readonly-input" type="text" readonly value="This can only be copied" /></th>
+                        </tr>
+                        <tr>
+                            <th><label for="disabled-input">Учебная группа</label>
+                                <input class="input" id="disabled-input" type="text"  /></th>
+                            <th><label for="textarea">О себе(стек)</label>
+                                <textarea class="input" id="textarea"></textarea></th>
+                        </tr>
+                    </table>
+
+                    <label for="textarea-disabled">О себе(стек)</label>
+                    <textarea class="input" id="textarea-disabled" ></textarea>
+                </div>
+
+            <div>
+            </div>
+
+        </div>
+
+        <div style="height: 420px">
+            <a>    </a>
+        </div>
         <downer/>
     </div>
-  <div v-else>
-    <upper/>
-    <br v-for="i in 9"/>
-    <h1>
-      Вы не зарегестрированный пользователь! Вернитесь на главную страницу!
-    </h1>
-    <br v-for="i in 9"/>
-    <downer/>
-  </div>
 </template>
 
 <script>
@@ -37,81 +56,117 @@
             downer,
 
         },
-      computed: {
-        isAvailable: function () {
-          return (localStorage.getItem('login') !== null) && (localStorage.getItem('login') !== undefined) && (localStorage.getItem('login') !== '');
+        computed: {
+            isAvailable: function () {
+                return (localStorage.getItem('login') !== null) && (localStorage.getItem('login') !== undefined) && (localStorage.getItem('login') !== '');
+            },
         },
-      },
-      }
+    }
 </script>
 
 <style scoped>
     .clear {
         clear: left;
     }
-    .btn__more {
-        width: 430px;
-        height: 40px;
-        font-size: 18px;
-        text-align: center;
-        margin: 20px 0 10px 50px;
-        background: rgba(0,0,0,.0);
-        border: 2px solid rgba(0, 0, 0, 0.4);
-        border-radius: 30px;
-        color: rgba(0, 0, 0, 0.4);
-        transition: all 500ms ease;
-        outline: 0 none !important;
+
+
+    table {
+
+        width: 100%; /* Ширина таблицы */
+        background: white; /* Цвет фона таблицы */
+        color: white; /* Цвет текста */
+        border-spacing: 1px; /* Расстояние между ячейками */
     }
-    .two{
-        width: 230px;
-        height: 40px;
-        margin-left: 140px;
-        background: beige;
+    td, th {
+        background: #615d5d; /* Цвет фона ячеек */
+        padding: 5px; /* Поля вокруг текста */
     }
 
-    .btn__more:hover {
-        background: white;
-        color: #1a3d5f;
-        font-size: 23px;
-        box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-        cursor: pointer;
-    }
-   .two:hover {
-        background: rgba(194, 67, 67, 0.3);;
-       color: rgba(0, 0, 0, 0.4);
-        font-size: 19px;
-        box-shadow: inset 0 0 0 3px #ffffff;
-        cursor: pointer;
-    }
-    .lk__textarea {
+    .imageicon3{
+        width: 70px;
+        display: block;
         float: left;
-        margin-top: -70px;
-        margin-left: 30px;
-        width: 800px;
-        height: 280px;
-        border-radius: 15px;
-        background: #F6FBFF;
-        border: 1px solid rgba(0, 0, 0, 0.4);
-        outline: 0 none !important;
-        font-size: 20px;
-        margin-bottom: 50px;
     }
 
-
-    .input__more {
-        width: 250px;
-        height: 30px;
-        font-size: 18px;
-        text-align: center;
-        background: white;
-        border: 2px solid dodgerblue;
+    *,
+    *::before,
+    *::after {
         box-sizing: border-box;
-        border-radius: 30px;
-        color: black;
-        transition: all 500ms ease;
-        margin-right: 50px;
-        outline: 0 none !important;
     }
+
+    :root {
+        --input-border: #8b8a8b;
+        --input-focus-h: 245;
+        --input-focus-s: 100%;
+        --input-focus-l: 42%;
+    }
+
+    .input {
+        margin-left: 10px;
+        margin-right: 20px;
+        margin-top: 20px;
+        font-size: 16px;
+        font-family: inherit;
+        padding: 0.25em 0.5em;
+        background-color: #fff;
+        border: 2px solid var(--input-border);
+        border-radius: 4px;
+        transition: 180ms box-shadow ease-in-out;
+    }
+
+    .input:focus {
+        border-color: hsl(
+                var(--input-focus-h),
+                var(--input-focus-s),
+                var(--input-focus-l)
+        );
+        box-shadow: 0 0 0 3px
+        hsla(
+                var(--input-focus-h),
+                var(--input-focus-s),
+                calc(var(--input-focus-l) + 40%),
+                0.8
+        );
+        outline: 3px solid transparent;
+    }
+
+    .input:not(textarea) {
+        line-height: 1;
+        height: 2.25rem;
+    }
+
+    input[type="file"] {
+        font-size: 0.9em;
+        padding-top: 0.35rem;
+    }
+
+    textarea.input {
+        resize: vertical;
+    }
+
+    .input[readonly] {
+        border-style: dotted;
+        cursor: not-allowed;
+        color: #777;
+    }
+
+    .input[disabled] {
+        --input-border: #ccc;
+
+        background-color: #eee;
+        cursor: not-allowed;
+    }
+
+    label {
+        font-size: 1.125rem;
+        font-weight: 500;
+        line-height: 1;
+    }
+
+    .input + label {
+        margin-top: 2rem;
+    }
+
 
     .right {
         float: left; /* Обтекание по правому краю */

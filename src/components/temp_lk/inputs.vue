@@ -124,8 +124,6 @@ const baseURL = 'http://localhost:41143/';
         box-sizing: border-box;
         border-radius: 15px;
         padding-left: 10px;
-
-
         font-size: 14px; /*размер шрифта*/
         font-style: normal;
         font-weight: normal;
@@ -157,6 +155,7 @@ const baseURL = 'http://localhost:41143/';
     }
 
     .input_11.b:hover {
+
         background-color: rgba(74, 201, 74, 0.2);
     }
 </style>
