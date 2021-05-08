@@ -3,7 +3,7 @@
         <upper/>
         <hello-card/>
         <filter-card></filter-card>
-        <post v-for="el in posts" :key="el.title"
+        <post v-for="el in posts" :key="el.members"
               :post_title=el.title :post_text=el.text :post_members=el.members
               :post_type=el.type></post>
 
@@ -57,7 +57,7 @@
                             "Проект для хакатона\n" +
                             "Проект для хакатона\n" +
                             "Проект для хакатона\n",
-                        members: 2,
+                        members: 3,
                         type: "Биология",
                     },
                     {
@@ -66,7 +66,7 @@
                             "Проект для хакатона\n" +
                             "Проект для хакатона\n" +
                             "Проект для хакатона\n",
-                        members: 2,
+                        members: 15,
                         type: "Биология",
                     },
                     {
@@ -75,13 +75,13 @@
                             "Проект для хакатона\n" +
                             "Проект для хакатона" +
                             "Проект для хакатона",
-                        members: 3,
+                        members:43,
                         type: "Наука",
                     },
                     {
                         title: "Ищу людей к команду",
                         text: "Проект для хакатона",
-                        members: 8,
+                        members: 5,
                         type: "Programming",
                     },
                     {
@@ -92,22 +92,22 @@
                     },{
                         title: "Ищу людей к команду",
                         text: "Проект для хакатона",
-                        members: 8,
+                        members: 89,
                         type: "Programming",
                     },{
                         title: "Ищу людей к команду",
                         text: "Проект для хакатона",
-                        members: 8,
+                        members: 6,
                         type: "Programming",
                     },{
                         title: "Ищу людей к команду",
                         text: "Проект для хакатона",
-                        members: 8,
+                        members: 96,
                         type: "Programming",
                     },{
                         title: "Ищу людей к команду",
                         text: "Проект для хакатона",
-                        members: 8,
+                        members: 58,
                         type: "Programming",
                     },
                 ]

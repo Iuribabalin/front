@@ -5,15 +5,12 @@
 </template>
 
 <script>
-
-
 document.title = 'Умный склад';
 
   export default {
     name: 'app',
     components: {
-
-    },
+    }
   }
 </script>
 

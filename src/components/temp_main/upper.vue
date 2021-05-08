@@ -8,13 +8,13 @@
                 <h1 style="font-size: 40px; font-family: Roboto; font-weight: bold">ITMO Team search</h1>
                 <nav class="nav">
                     <a class="nav__link" :class=" this.$route.name === 'main-page' ? 'active' : ''"
-                       @click="goTo('main')">Главная</a>
-                    <a class="nav__link" :class=" this.$route.name === 'lk-page' ? 'active' : ''" @click="goTo('lk')">Личный
-                        кабинет</a>
-                    <a class="nav__link" :class=" this.$route.name === 'lk-page' ? 'active' : ''" @click="goTo('lk')">{{
-                        user.login }}</a>
-                    <a class="nav__link" @click="signout" style="margin-right: 50px" v-if="isAvailable">Выйти</a>
-                    <a class="nav__link" @click="$router.push('/login')" style="margin-right: 50px" v-else>Войти</a>
+                       @click="$router.push('main')">Главная</a>
+
+                    <a class="nav__link" @click="$router.push('lk')" v-if="flag">Личный кабинет</a>
+                    <a class="nav__link" v-else></a>
+
+                    <a class="nav__link" @click="signout" style="margin-right: 50px" v-if="flag">Выйти</a>
+                    <a class="nav__link" @click="$router.push('login')" style="margin-right: 50px" v-else>Войти</a>
 
                 </nav>
             </div>
@@ -25,81 +25,24 @@
 
 <script>
     import logo from '@/components/temp_startup/logo'
+    import Vue from "vue";
 
     export default {
         name: "upper",
         components: {
             logo,
         },
-        data: function () {
-            return {
-                user: {
-                    login: '',
-                },
-                queries: {
-                    add: 'main/app/add',
-                    refresh: 'api/refresh/token',
-                    retrieve: 'main/app/dots/all',
-                },
-
-            }
-        },
-        mounted() {
-            if (localStorage.getItem('login') !== null || localStorage.getItem('login') !== undefined) this.user.login = localStorage.getItem("login")
-        },
-        computed: {
-            isAvailable: function () {
-                return (localStorage.getItem('login') !== null) && (localStorage.getItem('login') !== undefined) && (localStorage.getItem('login') !== '');
-            },
-        },
-        methods: {
-            signout: function (event) {
-                console.log('close current session...');
-                localStorage.clear();
-                this.$router.push({name: 'auth-page'});
-                window.scrollTo(0, 0);
-            },
-            goTo: function (path) {
-                this.$router.push({name: path + '-page'});
-            },
-        },
-
-        fetchToken: async function (repeat, ...args) {
-
-            console.log('fetching tokens from server...');
-            let response = await fetch(baseURL + this.queries.refresh, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify({refreshToken: localStorage.getItem("refreshToken")}),
-            }).catch(function () {
-                alert("Error while getting token. Check your connection")
-            });
-
-            console.log('check if response is ok');
-            if (response.ok) {
-
-                console.log('successful fetching new token');
-                console.log('getting json object...');
-                let json = await response.json();
-                if (json) {
-                    //this.$session.set(this.access, json.accessToken);
-                    localStorage.setItem("accessToken", json.accessToken);
-                    window.location.reload();
-                    repeat = repeat.bind(this);
-                    console.log('repeating losed operation...');
-                    repeat(args);
-                } else console.error('empty response body');
-
-            } else {
-                console.error(`bad response ${response.status} ${response.statusText}`);
-
-                console.log('redirecting to login-page...');
-
-                this.signout();
-            }
-        },
+      computed: {
+        flag:  function () {
+          return Vue.$cookies.get('FlagLog') === "true"
+        }
+      },
+      methods:{
+        signout(){
+          Vue.$cookies.set('FlagLog','false');
+          window.location.reload()
+        }
+      }
     }
 </script>
 

@@ -5,6 +5,11 @@
       <div id="login-form">
         <fieldset>
           <label class="loggo" id="main_title">РЕГИСТРАЦИЯ</label>
+          <div
+              class="err_message"
+              v-if="flagNoLogin">
+            Пользователь уже существует
+          </div>
           <input type="text" placeholder="ИМЯ" title="имя" v-model.trim="name"
                  v-bind:class="{'error_in_data': ($v.name.$dirty && !$v.name.required),
                  'in_data': true}">
@@ -88,7 +93,7 @@
             Пароль должен иметь больше {{$v.pass.$params.minLength.min}} символов
           </div>
 
-          <a class="trouble_link" @click="goTo('login')">ВЕРНУТЬСЯ КО ВХОДУ</a>
+          <a class="trouble_link" @click="$router.push('login')">ВЕРНУТЬСЯ КО ВХОДУ</a>
 
           <button title="Зайти в аккаунт" class="loging__btn" type="submit">
             <svg id="arrow" width="59" height="24" viewBox="0 0 59 24" fill="black" xmlns="http://www.w3.org/2000/svg">
@@ -122,6 +127,7 @@ export default {
       group: '',
       email: '',
       pass: '',
+      flagNoLogin: false,
     }
   },
 
@@ -153,18 +159,24 @@ export default {
 
       axios({
         method: 'post',
-        url: '/api/aunt/register',
+        url: 'https://ict-tagall.herokuapp.com/api/aunt/register',
         data: formDataReg
-      }).then(function (response) {
-        console.log(response);
-        this.$router.push('Login')
-      }).catch(function (response) {
-        console.log(response);
-      });
-    },
-    goTo: function (path) {
-      this.$router.push('/'+path);
-    },
+      }).then(resp => {
+        console.log(resp.data.accessToken)
+        console.log(resp.data.refreshToken)
+        this.$router.push('/login')
+      }).catch(err => {
+        this.flagNoLogin = true
+        this.name= ''
+        this.surname= ''
+        this.status=''
+        this.course= ''
+        this.group= ''
+        this.email= ''
+        this.pass= ''
+        return
+      })
+    }
   }
 }
 </script>

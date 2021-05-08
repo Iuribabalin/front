@@ -6,14 +6,22 @@
     <h3>Ищите команду проще</h3>
   </div>
   <div class="downer__column">
-    <br>
-    <h2>Навигация</h2>
-    <br>
-    <a href="#">Личный кабинет</a>
-    <br>
-    <a href="#">Регистрация</a>
-    <br>
-    <a href="#">Выход</a>
+    <div v-if="flag">
+      <br>
+      <h2>Навигация</h2>
+      <br>
+      <a href="/lk">Личный кабинет</a>
+      <br>
+      <a class="trouble_link" @click="signout">Выход</a>
+    </div>
+    <div v-else>
+      <br>
+      <h2>Навигация</h2>
+      <br>
+      <a class="trouble_link" @click="$router.push('/reg')">Регистрация</a>
+      <br>
+      <a class="trouble_link" @click="$router.push('/login')">Вход</a>
+    </div>
   </div>
   <div class="downer__column">
     <br>
@@ -36,12 +44,31 @@
 </template>
 
 <script>
+import Vue from "vue";
+
 export default {
-  name: "downer"
+  name: "downer",
+  computed: {
+    flag:  function () {
+      return Vue.$cookies.get('FlagLog') === "true"
+    }
+  },
+  methods:{
+    signout(){
+      Vue.$cookies.set('FlagLog','false');
+      window.location.reload()
+    }
+  }
 }
 </script>
 
 <style scoped>
+.trouble_link {
+  float: left;
+  text-decoration: underline;
+  margin: 0 0 0 0px;
+}
+
 *{
   background: #050630;
   color: white;

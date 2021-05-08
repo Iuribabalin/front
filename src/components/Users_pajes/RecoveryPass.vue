@@ -14,7 +14,7 @@
               v-if="$v.email.$dirty && !$v.email.required || $v.email.$dirty && !$v.email.email ">
             Некорректные данные
           </div>
-          <a class="trouble_link" @click="goTo('login')">ВЕРНУТЬСЯ КО ВХОДУ</a>
+          <a class="trouble_link" @click="$router.push('/login')">ВЕРНУТЬСЯ КО ВХОДУ</a>
           <button title="Зайти в аккаунт" class="loging__btn" type="submit">
             <svg id="arrow" width="59" height="24" viewBox="0 0 59 24" fill="black" xmlns="http://www.w3.org/2000/svg">
               <path d="M58.0607 13.0607C58.6464 12.4749 58.6464 11.5251
@@ -59,9 +59,6 @@ export default {
       console.log(JSON.stringify(formDataReg))
 
       this.$router.push('/login')
-    },
-    goTo: function (path) {
-      this.$router.push('/'+path);
     },
   }
 }

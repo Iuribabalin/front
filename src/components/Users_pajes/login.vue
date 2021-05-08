@@ -5,7 +5,11 @@
       <div id="login-form">
         <fieldset>
           <label id="main_title">ВХОД</label>
-
+          <div
+              class="err_message"
+              v-if="flagNoLogin">
+            Неверные логин или пароль
+          </div>
           <input class="in_data" id="email" type="text" placeholder="ПОЧТА" title="Почта" v-model.trim="email"
                  v-bind:class="{'error_in_data': ($v.email.$dirty && !$v.email.required),
                  'in_data': true}">
@@ -30,9 +34,9 @@
             Пароль должен иметь больше {{$v.pass.$params.minLength.min}} символов
           </div>
 
-          <a class="trouble_link" @click="goTo('pass_recovery')"> ЗАБЫЛИ ПАРОЛЬ </a>
+          <a class="trouble_link" @click="$router.push('/pass_recovery')"> ЗАБЫЛИ ПАРОЛЬ </a>
           <br/>
-          <a class="trouble_link" @click="goTo('reg')"> РЕГИСТРАЦИЯ </a>
+          <a class="trouble_link" @click="$router.push('/reg')"> РЕГИСТРАЦИЯ </a>
 
           <button title="Зайти в аккаунт" class="loging__btn" type="submit">
             <svg id="arrow" width="59" height="24" viewBox="0 0 59 24" fill="black" xmlns="http://www.w3.org/2000/svg">
@@ -53,6 +57,7 @@
 <script>
 import {email, required, minLength} from  'vuelidate/lib/validators'
 import axios from 'axios'
+import Vue from "vue";
 
 export default {
   name: "login",
@@ -60,6 +65,7 @@ export default {
     return {
       email: '',
       pass: '',
+      flagNoLogin: false,
     }
   },
   components:{
@@ -83,18 +89,18 @@ export default {
 
       axios({
         method: 'post',
-        url: '/loginUser',
+        url: 'https://ict-tagall.herokuapp.com/api/aunt/sign_in',
         data: formDataReg
-      }).then(function (response) {
-        console.log(response);
+      }).then(resp => {
+        Vue.$cookies.set('FlagLog','true');
+        Vue.$cookies.set('login', this.email);
         this.$router.push('/')
-      }).catch(function (response) {
-        console.log(response);
-      });
-
-    },
-    goTo: function (path) {
-      this.$router.push('/'+path);
+      }).catch(err => {
+        this.flagNoLogin = true
+        this.pass = ''
+        this.email = ''
+        return
+      })
     },
   }
 }

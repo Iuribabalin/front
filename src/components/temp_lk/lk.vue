@@ -1,45 +1,30 @@
 <template>
     <div class="lk">
-        <upper/>
-        <img src="@/assets/icon2.png" class="imageicon3">
-        <div class="right"><h1>Личный кабинет</h1></div>
-        <div style="margin-left: 20px; width: 550px; margin-top: 100px; position:absolute;">
-
-                <div >
-                    <table>
-                        <tr>
-                            <th><label for="text-input">___ Имя ___    </label>
-                                <input class="input" id="text-input" type="text" /></th>
-                            <th><label for="date-input">Дата рождения</label>
-                                <input class="input" id="date-input" type="date" /></th>
-                        </tr>
-                        <tr>
-                            <th><label for="text-input">Фамилия</label>
-                                <input class="input" id="text-input2" type="text" /></th>
-                            <th> <label for="readonly-input">__Email__</label>
-                                <input class="input" id="readonly-input" type="text" readonly value="This can only be copied" /></th>
-                        </tr>
-                        <tr>
-                            <th><label for="disabled-input">Учебная группа</label>
-                                <input class="input" id="disabled-input" type="text"  /></th>
-                            <th><label for="textarea">О себе(стек)</label>
-                                <textarea class="input" id="textarea"></textarea></th>
-                        </tr>
-                    </table>
-
-                    <label for="textarea-disabled">О себе(стек)</label>
-                    <textarea class="input" id="textarea-disabled" ></textarea>
-                </div>
-
-            <div>
-            </div>
-
+      <upper/>
+      <img src="@/assets/icon2.png" class="imageicon3">
+      <div class="right"><h1>Личный кабинет</h1></div>
+      <div style="margin-left: 20px; width: 550px; margin-top: 100px; position:absolute;">
+        <div class="downer">
+          <div class="downer__column">
+            <ul>
+              <li>ИМЯ: {{name}}</li>
+              <li>ФАМИЛИЯ: {{secondname}}</li>
+              <li>КУРС: {{course}}</li>
+              <li>ГРУППА: {{group}}</li>
+              <li>СТАТУС: {{status}}</li>
+              <li>СВЯЗАТЬСЯ ЧЕРЕЗ: {{email}}</li>
+            </ul>
+          </div>
+          <div class="downer__column">
+            <a class="nav__link" @click="">Добавить новый пост</a>
+            <p>У вас активных постов: {{count_posts}}</p>
+          </div>
         </div>
+      </div>
 
-        <div style="height: 420px">
-            <a>    </a>
-        </div>
+      <div id="footer">
         <downer/>
+      </div>
     </div>
 </template>
 
@@ -47,28 +32,76 @@
     import upper from "@/components/temp_main/upper";
     import downer from "@/components/temp_main/downer";
     import Inputs from "./inputs";
+    import Vue from "vue";
+    import axios from "axios";
 
     export default {
         name: "lk",
+        data(){
+          return{
+            name: '',
+            secondname: '',
+            course: '',
+            group: '',
+            status: '',
+            email: '',
+            count_posts: ''
+          }
+        },
         components: {
             Inputs,
             upper,
             downer,
+        },
+        methods:{
+          checkLog(){
+            if(Vue.$cookies.get('FlagLog') === "false")
+              this.$router.push('/main')
+          },
+          getInfoUser() {
+            let data = {
+              login: Vue.$cookies.get('login'),
+            }
+            axios({
+              method: 'post',
+              url: 'https://ict-tagall.herokuapp.com/api/aunt/getinfo',
+              data: data
+            }).then(resp => {
+              console.log(resp.data)
+              this.name = resp.data.firstname
+              this.secondname = resp.data.secondname
+              this.course = resp.data.course
+              this.group = resp.data.usergroup
+              if(resp.data.role == "STUDENT"){
+                this.status = "СТУДЕНТ"
+              }else{
+                this.status = "МЕНТОР"
+              }
+              this.email = data.login
+              this.count_posts = data.posts.length
 
+              return
+            }).catch(err => {
+              return
+            })
+          },
         },
-        computed: {
-            isAvailable: function () {
-                return (localStorage.getItem('login') !== null) && (localStorage.getItem('login') !== undefined) && (localStorage.getItem('login') !== '');
-            },
-        },
+        mounted() {
+          this.checkLog()
+          this.getInfoUser()
+        }
     }
 </script>
 
 <style scoped>
+#footer{
+
+  width: 100%;
+  margin-top: 32.5%;
+}
     .clear {
         clear: left;
     }
-
 
     table {
 
@@ -180,4 +213,27 @@
         margin-right: 0;
 
     }
+.downer {
+  clear: both;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: table;
+  z-index: 1;
+  font-family: Roboto;
+}
+.downer__column {
+
+  display: table-cell;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.downer__column  h2{
+
+  display: table-cell;
+  text-align: left;
+  margin-bottom: 10px;
+}
 </style>
