@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import registration_container from "@/components/temp_views/registration_container";
 import page_container from "@/components/temp_views/page_container";
 import lk_container from "@/components/temp_views/lk_container";
 
@@ -18,57 +17,6 @@ export default new VueRouter({
             }
         },
         {
-            path: '/auth',
-            name: 'auth-page',
-            component: registration_container,
-            props: {
-                typeOfPage: "auth",
-            },
-            beforeEnter: (to, from, next) => {
-                // if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken")) {
-                //     next({name: 'main-page'})
-                // } else {
-                    next()
-                //}
-            }
-
-        },
-        {
-            path: '/registration',
-            name: 'registration-page',
-            component: registration_container,
-            props: {
-                typeOfPage: "reg",
-            },
-            beforeEnter: (to, from, next) => {
-                // TODO: RETURN THIS PART
-                // if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken")) {
-                //     next({name: 'main-page'})
-                // } else {
-                //     next()
-                // }
-                next();
-            }
-
-        },
-
-        {
-            path: '/confirm',
-            name: 'confirm-page',
-            component: registration_container,
-            props: {
-                typeOfPage: "confirm",
-            },
-            beforeEnter: (to, from, next) => {
-                if (localStorage.getItem("accessToken") && localStorage.getItem("refreshToken")) {
-                    next({name: 'main-page'})
-                } else if (from.name === 'registration-page') {
-                    next()
-                } else next({name: 'auth-page'});
-            }
-
-        },
-        {
             path: '/main',
             name: 'main-page',
             component: page_container,
@@ -83,6 +31,24 @@ export default new VueRouter({
             beforeEnter: (to, from, next) => {
                 next();
             }
-        }
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            meta: {layout: 'login'},
+            component: () => import('@/components/Users_pajes/login.vue')
+        },
+        {
+            path: '/reg',
+            name: 'Reg',
+            meta: {layout: 'reg'},
+            component: () => import('@/components/Users_pajes/reg.vue')
+        },
+        {
+            path: '/pass_recovery',
+            name: 'PassRecovery',
+            meta: {layout: 'pass_recovery'},
+            component: () => import('@/components/Users_pajes/RecoveryPass.vue')
+        },
     ]
 });

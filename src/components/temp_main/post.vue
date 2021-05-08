@@ -1,33 +1,48 @@
 <template>
-    <div class="form">
+    <div class="form" >
         <div class="head">
             <img class="icon" src="@/assets/icon.png">
-            <div class="aa"><a> Заголовок head</a></div>
-            <img class="icon2 scale" src="@/assets/Cross-lines (1).png">
+            <div class="aa"><a>{{post_title}}</a></div>
+            <img class="icon2 scale"  @click="close()" src="@/assets/Cross-lines (1).png">
         </div>
 
         <div class="body">
-            <h1>post</h1>
+            <h1>{{post_text}}</h1>
             <h1>*post</h1>
             <h1>*post</h1>
             <h1>*post</h1>
-
         </div>
 
         <div class="information">
-            <a>members:  4/4</a>
-            <a>type: Programming</a>
+            <a>members:  {{post_members}} </a>
+            <a>type: {{post_type}} </a>
         </div>
 
     </div>
 </template>
 
 <script>
-    import Sending from "./sending";
+
+
     export default {
         name: "post",
-        components: {Sending}
+
+        props: {
+            post_title: String,
+            post_text: String,
+            post_members: Number,
+            post_type: String,
+        },
+
+        methods: {
+            close() {
+                this.$destroy();
+                this.$el.parentNode.removeChild(this.$el);
+            }
+
+        },
     }
+
 </script>
 
 

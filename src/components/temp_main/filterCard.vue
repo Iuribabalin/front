@@ -42,11 +42,14 @@
         font-weight: bold;
         margin-top: 220px;
         width: 210px;
-        height: 170px;
+        height: 190px;
         margin-left: 12px;
 
         margin-bottom:70px;
-        padding: 10px 10px 10px;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-bottom: 40px;
         box-shadow: 0 0 5px rgba(0,0,0,0.5);
         position: fixed;
         left: 5px ;
@@ -67,11 +70,12 @@
     .select{
         text-align-last: center;
         margin-top: 5px;
+
         text-align-all: center;
         width: 120px;
-        height: 24px;
+        height: 30px;
         box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-        border-radius: 8px;
+        border-radius: 3px;
         -moz-appearance: none;
         -webkit-appearance: none;
         appearance: none;
@@ -80,7 +84,10 @@
         background-repeat: no-repeat, repeat;
         background-position: right .7em top 50%, 0 0;
         background-size: .65em auto, 100%;
+        background: transparent;
+
     }
+
     .select-css::-ms-expand { display: none; }
     .select-css:hover { border-color: #888; }
     .select-css:focus { border-color: #aaa;

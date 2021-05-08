@@ -1,5 +1,5 @@
 <template>
-	<header>
+	<header class="headdd">
         <img id="logo_svg" @click="goTo('main')" src="@/assets/itmo.png" alt="полки" class="i" style="width: 20%; margin-left: 10px"   >
   </header>
 </template>
@@ -24,6 +24,10 @@ export default {
     margin-top: 2%;
 
   }
+    .headdd{
+        margin-top: -40px;
+        margin-bottom: -85px;
+    }
 
 </style>
 
