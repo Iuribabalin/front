@@ -16,9 +16,6 @@
 
 
 <script>
-
-
-
     import upper from '@/components/temp_main/upper'
     import downer from "@/components/temp_main/downer";
     import Post from "./post";

@@ -17,7 +17,7 @@
           </div>
           <div class="downer__column">
             <a class="nav__link" @click="">Добавить новый пост</a>
-            <p>У вас активных постов: {{count_posts}}</p>
+            <a class="nav__link" @click=""><p>У вас активных постов: {{count_posts}}</p></a>
           </div>
         </div>
       </div>
@@ -78,7 +78,8 @@
                 this.status = "МЕНТОР"
               }
               this.email = data.login
-              this.count_posts = data.posts.length
+              console.log(resp.data.posts)
+              this.count_posts = resp.data.posts.length
 
               return
             }).catch(err => {

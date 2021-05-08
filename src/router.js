@@ -50,5 +50,11 @@ export default new VueRouter({
             meta: {layout: 'pass_recovery'},
             component: () => import('@/components/Users_pajes/RecoveryPass.vue')
         },
+        {
+            path: '/mePosts',
+            name: 'MePosts',
+            meta: {layout: 'mePosts'},
+            component: () => import('@/components/me_posts/mePosts.vue')
+        },
     ]
 });
