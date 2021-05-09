@@ -9,7 +9,7 @@
 
         <div class="body" v-if="show">
             <h1 style="padding-bottom: 30px">{{post_text}}</h1>
-            <button class="loging__btnn" @click="addToTeam"  v-if="flag">Присоединиться</button>
+            <button class="loging__btnn" style="background-color: white" @click="addToTeam , decreaseFont()"  v-if="flag">Присоединиться</button>
 
         </div>
         </transition>
@@ -44,9 +44,11 @@
     export default {
         name: "post_mainpage",
 
+
         data(){
             return {
                 show: false,
+                flag_alert: true,
             }
         },
         computed: {
@@ -66,6 +68,21 @@
         },
 
         methods: {
+
+
+            decreaseFont() {
+                if(this.flag_alert){
+                    alert("Вы присоединились к команде!")
+                    this.flag_alert = false;
+                }else{
+                    alert("Вы Вышли из команды")
+                    this.flag_alert = true;
+                }
+
+
+
+            },
+
             addToTeam() {
                 let del_data = {
                     login: Vue.$cookies.get('login'),
@@ -113,8 +130,6 @@ float: right;
 
     .loging__btnn:hover {
         outline: none;
-        background: #6FB2E6;
-        color: #fff;
         box-shadow: inset 0 0 0 3px #6FB2E6;
         cursor: pointer;
     }
