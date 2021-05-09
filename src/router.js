@@ -62,5 +62,11 @@ export default new VueRouter({
             meta: {layout: 'addPosts'},
             component: () => import('@/components/Users_pajes/AddPost.vue')
         },
+        {
+            path: '/regCommand',
+            name: 'RegCommand',
+            meta: {layout: 'regCommand'},
+            component: () => import('@/components/Users_pajes/CreateCommand.vue')
+        },
     ]
 });
