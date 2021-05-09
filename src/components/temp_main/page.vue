@@ -2,7 +2,7 @@
     <div class="lala">
         <upper/>
         <hello-card v-if="$cookies.get('FlagLog') == 'true'"/>
-        <filter-card></filter-card>
+
         <post v-for="el in posts" :key="el.members"
               :post_title=el.title :post_text=el.text :post_members=el.numberOfMembers></post>
 
