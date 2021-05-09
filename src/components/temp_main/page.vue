@@ -3,8 +3,8 @@
         <upper/>
         <hello-card v-if="$cookies.get('FlagLog') == 'true'"/>
 
-        <post v-for="el in posts" :key="el.members"
-              :post_title=el.title :post_text=el.text :post_members=el.numberOfMembers></post>
+        <!--<post v-for="el in posts" :key="el.members"
+              :post_title=el.title :post_text=el.text :post_members=el.numberOfMembers></post>-->
 
         <div id="footer">
             <downer/>

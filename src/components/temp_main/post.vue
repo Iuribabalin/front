@@ -11,7 +11,7 @@
         </div>
 
         <div class="information">
-            <a>members:  {{post_members}} </a>
+            <a>time: {{post_time.split('T')[0] + " " + post_time.split('T')[1].split('.')[0]}} </a>
         </div>
 
     </div>
@@ -20,6 +20,9 @@
 <script>
 
 
+    import axios from "axios";
+    import Vue from "vue";
+
     export default {
         name: "post",
 
@@ -27,15 +30,29 @@
             post_title: String,
             post_text: String,
             post_members: Number,
+            post_time: String,
         },
 
         methods: {
-            close() {
-
-              this.$destroy();
-              this.$el.parentNode.removeChild(this.$el);
+          close() {
+            let del_data = {
+              login: Vue.$cookies.get('login'),
+              time: this.post_time
             }
 
+            axios({
+              method: 'post',
+              url: 'https://ict-tagall.herokuapp.com/main/app/deletepost',
+              data: del_data
+            }).then(resp => {
+              this.$destroy();
+              this.$el.parentNode.removeChild(this.$el);
+              window.location.reload()
+              return
+            }).catch(err => {
+              return
+            })
+          },
         },
     }
 

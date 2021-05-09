@@ -1,11 +1,11 @@
-<template>
+<template xmlns:hh="">
   <div>
     <upper/>
     <h1>Мои посты:</h1>
     <div v-if="posts.length != 0">
     <post v-for="el in posts" :key="el.members"
           :post_title=el.title :post_text=el.text :post_members=el.members
-          :post_type=el.type></post>
+          :post_time= el.time></post>
     </div>
     <div v-else>
       <h1>Постов не найдено</h1>
@@ -51,9 +51,8 @@ export default {
         url: 'https://ict-tagall.herokuapp.com/api/aunt/getinfo',
         data: data
       }).then(resp => {
-        console.log(resp.data.posts)
         this.posts = resp.data.posts
-
+        console.log(this.posts)
         return
       }).catch(err => {
         return
