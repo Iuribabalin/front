@@ -141,11 +141,12 @@
         padding-bottom: 20px;
         font-size: 15px;
         font-style: inherit;
-        color: rgba(44, 49, 52,0.5);
+        color: #0000f3;
+
 
     }.information:hover {
-         opacity: 0.4;
-         transition: opacity 1s;
+         transition: opacity 0.1s;
+        color: #0000f3;
      }
 
 </style>

@@ -1,20 +1,26 @@
 <template>
     <div class="form" >
 
-        <div class="head">
-            <img class="icon" v-on:click="show = !show" src="@/assets/icon.png">
-            <div class="aa" v-on:click="show = !show"><a>{{post_title}}</a></div>
+        <div class="head "  v-on:click="show = !show">
+            <img class="icon"  src="@/assets/icon.png">
+            <div class="aa"><a>{{post_title}}</a></div>
         </div>
         <transition name="fade">
 
-        <div class="body "v-if="show">
-            <h1>{{post_text}}</h1>
+        <div class="body" v-if="show">
+            <h1 style="padding-bottom: 30px">{{post_text}}</h1>
+            <button class="loging__btnn">Присоединиться</button>
+
         </div>
         </transition>
 
         <div class="information">
-            <a>time: {{post_time.split('T')[0] + " " + post_time.split('T')[1].split('.')[0]}} </a>
+            <a >Информация о создании </a>
+            <a style="color: #3e606f">Имя: {{post_nameU}}   </a>
+            <a style="color: #3e606f">Фамилия: {{post_SnameU}}   </a>
+            <a style="color: #3e606f">time: {{post_time.split('T')[0] + " " + post_time.split('T')[1].split('.')[0]}} </a>
         </div>
+
 
 <!--        <div class="demo">-->
 <!--            <button v-on:click="show = !show">-->
@@ -49,6 +55,8 @@
             post_text: String,
             post_members: Number,
             post_time: String,
+            post_nameU: String,
+            post_SnameU: String,
         },
 
         methods: {
@@ -80,8 +88,35 @@
 <style scoped>
 
 
+    .loging__btnn {
+        position: static;
+        outline: 0 none !important;
+        color: black;
+        font-weight: bold;
+        width: 120px;
+        height: 40px;
+        margin-top: -40px;
+        margin-right: -50px;
+        margin-left: 20px;
+        margin-bottom: 0px;
+        background: #F3F3F3;
+        border: 2px solid #686363;
+float: right;
+        border-radius: 10px;
+        transition: all 500ms ease;
+    }
+
+
+    .loging__btnn:hover {
+        outline: none;
+        background: #6FB2E6;
+        color: #fff;
+        box-shadow: inset 0 0 0 3px #6FB2E6;
+        cursor: pointer;
+    }
+
     .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s;
+        transition: opacity .2s;
     }
     .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
         opacity: 0;
@@ -90,6 +125,9 @@
     h1{
         font-size: 15px;
         font-family: Arial;
+    }
+    a{
+        color: black;
     }
     .aa{
         padding-top: 10px;
@@ -113,14 +151,6 @@
     .scale:hover {
         transform: scale(1.2); /* Увеличиваем масштаб */
     }
-    .icon2{
-        position: absolute;
-        margin-left: 550px;
-        margin-top: -30px;
-        width: 30px;
-        display: block;
-        float: left;
-    }
     .form{
         position: absolute;
         top: 50%;
@@ -141,17 +171,19 @@
         margin-left: 10px;
         font-family: Roboto;
         font-size: 20px;
-        color: #545457;
+        color: #0e0e0e;
     }
     .body{
-        margin-left: 10px;
+        width: 500px;
+        margin-top: 20px;
+        margin-left: 30px;
         font-family: Roboto;
         font-size: 15px;
-        color: #545457;
+        color: #0a0a0a;
     }
     .form:hover {
         opacity: 0.9;
-        transition: opacity 0.6s;
+        transition: opacity 0.1s;
         box-shadow: 0px 0px 10px rgb(7, 58, 241);
     }
     .information{
@@ -168,11 +200,12 @@
         padding-bottom: 20px;
         font-size: 15px;
         font-style: inherit;
-        color: rgba(44, 49, 52,0.5);
+        color: rgba(36, 38, 40, 0.5);
 
     }.information:hover {
-         opacity: 0.4;
-         transition: opacity 1s;
+         opacity: 0.9;
+        color: grey;
+         transition: opacity 0.3s;
      }
 
 </style>
