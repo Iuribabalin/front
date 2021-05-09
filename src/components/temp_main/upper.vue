@@ -10,7 +10,9 @@
                     <a class="nav__link" :class=" this.$route.name === 'main-page' ? 'active' : ''"
                        @click="$router.push('main')">Главная</a>
 
-                    <a class="nav__link" @click="$router.push('lk')" v-if="flag">Личный кабинет</a>
+                    <a class="nav__link" @click="$router.push('lk')" v-if="flag"
+                       :class=" this.$route.name === 'lk-page' ? 'active' : ''"
+                    >Личный кабинет</a>
                     <a class="nav__link" v-else></a>
 
                     <a class="nav__link" @click="signout" style="margin-right: 50px" v-if="flag">Выйти</a>

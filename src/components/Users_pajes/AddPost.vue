@@ -4,6 +4,7 @@
     <div id="loging" >
       <div id="login-form">
         <fieldset>
+          <label class="loggo" id="main_title">СОЗДАНИЕ ПОСТА</label>
           <input type="text" placeholder="ТЕМА" title="тема" v-model.trim="title"
                  v-bind:class="{'error_in_data': (this.$v.title.$dirty && !this.$v.title.required),
                  'in_data': true}">
@@ -151,7 +152,7 @@ export default {
   width: 90%;
   border: 1px solid #c6c9cc;
   border-radius: 15px;
-  color: #555;
+  color: #0e0e0e;
   display: block;
   padding: 1% 2%;
   height: 50px;
@@ -183,13 +184,13 @@ export default {
 
 #login-form label.selector_label{
   margin-left: 20px;
-  color: #3e606f;
+  color: #090909;
   font-family: Satisfy, Lato, Open Sans, Roboto, sans-serif;
   text-transform: capitalize;
 }
 
 #login-form label {
-  color: #3e606f;
+  color: #000000;
   font-family: Satisfy, Lato, Open Sans, Roboto, sans-serif;
   text-transform: capitalize;
   font-size: 170%;
