@@ -3,6 +3,7 @@
         <upper/>
         <hello-card v-if="flag"></hello-card>
         <post_mainpage  v-for="el in posts" :key="el.members"
+                        :posts_team_name=el.teamname
                         :post_title=el.title :post_text=el.text :post_members=el.members
                         :post_time= el.time  :post_name-u="el.firstname" :post_-sname-u="el.secondname"></post_mainpage>
         <div id="footer">

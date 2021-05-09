@@ -9,7 +9,7 @@
 
         <div class="body" v-if="show">
             <h1 style="padding-bottom: 30px">{{post_text}}</h1>
-            <button class="loging__btnn">Присоединиться</button>
+            <button class="loging__btnn" @click="addToTeam">Присоединиться</button>
 
         </div>
         </transition>
@@ -51,6 +51,7 @@
         },
 
         props: {
+            posts_team_name: String,
             post_title: String,
             post_text: String,
             post_members: Number,
@@ -60,20 +61,18 @@
         },
 
         methods: {
-            close() {
+            addToTeam() {
                 let del_data = {
                     login: Vue.$cookies.get('login'),
-                    time: this.post_time
+                    name: this.posts_team_name
                 }
 
                 axios({
                     method: 'post',
-                    url: 'https://ict-tagall.herokuapp.com/main/app/deletepost',
+                    url: 'https://ict-tagall.herokuapp.com/main/app/team/member',
                     data: del_data
                 }).then(resp => {
-                    this.$destroy();
-                    this.$el.parentNode.removeChild(this.$el);
-                    window.location.reload()
+
                     return
                 }).catch(err => {
                     return

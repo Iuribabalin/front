@@ -197,7 +197,7 @@ export default {
   font-size: 170%;
   margin-right: auto;
   margin-top: 0;
-  color: rgb(26, 28, 28);
+  color: rgb(29, 31, 31);
 }
 
 #loging {

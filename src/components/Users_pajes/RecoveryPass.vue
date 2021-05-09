@@ -35,6 +35,7 @@
 import {email, required} from  'vuelidate/lib/validators'
 import Logo from "../temp_startup/logo";
 import Upper from "../temp_main/upper";
+import axios from "axios";
 export default {
   name: "RecoveryPass",
   components: {Upper, Logo},
@@ -54,10 +55,18 @@ export default {
       }
 
       const formDataReg = {
-        email: this.email,
+        login: this.email,
       }
 
-      console.log(JSON.stringify(formDataReg))
+      axios({
+        method: 'post',
+        url: 'https://ict-tagall.herokuapp.com/api/aunt/getpassword',
+        data: formDataReg
+      }).then(resp => {
+        this.$router.push('/login')
+      }).catch(err => {
+        return
+      })
 
       this.$router.push('/login')
     },
