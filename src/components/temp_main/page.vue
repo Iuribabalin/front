@@ -1,11 +1,10 @@
 <template>
     <div class="lala">
         <upper/>
-        <hello-card v-if="$cookies.get('FlagLog') == 'true'"/>
-
-        <!--<post v-for="el in posts" :key="el.members"
-              :post_title=el.title :post_text=el.text :post_members=el.numberOfMembers></post>-->
-
+        <hello-card />
+        <post_mainpage  v-for="el in posts" :key="el.members"
+                        :post_title=el.title :post_text=el.text :post_members=el.members
+                        :post_time= el.time></post_mainpage>
         <div id="footer">
             <downer/>
         </div>
@@ -21,10 +20,12 @@
     import HelloCard from "./helloCard";
     import FilterCard from "./filterCard";
     import axios from "axios";
+    import Post_mainpage from "./post_mainpage";
 
     export default {
         name: 'page',
         components: {
+            Post_mainpage,
             FilterCard,
             HelloCard,
             Post,
