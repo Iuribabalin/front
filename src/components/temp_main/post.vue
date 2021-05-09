@@ -110,6 +110,7 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
 }
+
 .head{
     margin-left: 10px;
     font-family: Roboto;

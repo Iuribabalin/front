@@ -2,12 +2,13 @@
     <div class="lk">
       <upper/>
       <img src="@/assets/icon2.png" class="imageicon3">
+      <h1 style="margin-left: 550px">Личный кабинет</h1>
       <div class="right">
-        <h1>Личный кабинет</h1>
-        <a class="nav__link" @click="$router.push('addPosts')">Добавить новый пост</a>
-        <a class="nav__link" @click="$router.push('/mePosts')">У вас активных постов: {{count_posts}}</a>
+
+        <a class="nav__link two" @click="$router.push('addPosts')">✓ Добавить новый пост</a>
+        <a class="nav__link two" @click="$router.push('/mePosts')">✓ Смотреть активные посты: {{count_posts}}</a>
       </div>
-      <div style="margin-left: 20px; width: 550px; margin-top: 100px; position:absolute;">
+      <div style="margin-left: 90px; width: 550px; margin-top: 100px; position:absolute;">
         <div class="form" >
           <div class="in_form">
             <p id="first">ИМЯ: {{name}}</p>
@@ -19,9 +20,14 @@
           </div>
         </div>
       </div>
-      <div id="footer">
-        <downer/>
+      <div style="margin-left: 500px; width: 550px; margin-top: 100px; position:static;">
+        <div class="form2" >
+          <div class="in_form">
+            <me-posts_mini/>
+          </div>
+        </div>
       </div>
+      <downer style="margin-top: 100px; position: relative"></downer>
     </div>
 </template>
 
@@ -31,6 +37,7 @@
     import Inputs from "./inputs";
     import Vue from "vue";
     import axios from "axios";
+    import MePosts_mini from "../me_posts/mePosts_mini";
 
     export default {
         name: "lk",
@@ -42,10 +49,12 @@
             group: '',
             status: '',
             email: '',
-            count_posts: ''
+            count_posts: '',
+            teamname: ''
           }
         },
         components: {
+          MePosts_mini,
             Inputs,
             upper,
             downer,
@@ -67,6 +76,9 @@
               this.name = resp.data.firstname
               this.secondname = resp.data.secondname
               this.course = resp.data.course
+              if (resp.data.teamname != undefined && resp.data.teamname != null){
+                this.teamname=resp.data.teamname
+              }
               this.group = resp.data.usergroup
               if(resp.data.role == "STUDENT"){
                 this.status = "СТУДЕНТ"
@@ -112,6 +124,23 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
 }
+.form2{
+  padding-bottom: 50px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-left: -250px;
+  margin-bottom: 20px;
+  max-width:900px ;
+  max-height: 2000px;
+  min-width: 50px;
+
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
 #footer{
 
   width: 100%;
@@ -137,6 +166,7 @@
         width: 70px;
         display: block;
         float: left;
+      margin-top: 150px;
       margin-left: 35px;
     }
 
@@ -222,7 +252,7 @@
 
     .right {
         float: left; /* Обтекание по правому краю */
-        width: 500px;
+        width: 350px;
         margin-left: -7px;
     }
 

@@ -70,7 +70,7 @@ export default {
 }
 
 *{
-  background: #050630;
+  background: black;
   color: white;
 }
 h1,h2,h3 {

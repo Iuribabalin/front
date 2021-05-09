@@ -1,7 +1,9 @@
 <template>
     <div>
         <div class="hellocard" >
+
             <img src="@/assets/icon2.png" class="imageicon">
+            <a style="font-size: 25px; margin-left: 10px;margin-top: 20px">User</a>
             <p class="name">ИМЯ: {{name}}</p>
             <p class="sate" >СТАТУС: {{status}}</p>
         </div>
@@ -50,7 +52,7 @@
 
 <style>
 .name{
-  margin-top: 65px;
+  margin-top: 35px;
   margin-left: 10px;
 }
 .sate{
