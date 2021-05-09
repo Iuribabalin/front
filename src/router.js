@@ -56,5 +56,11 @@ export default new VueRouter({
             meta: {layout: 'mePosts'},
             component: () => import('@/components/me_posts/mePosts.vue')
         },
+        {
+            path: '/addPosts',
+            name: 'AddPosts',
+            meta: {layout: 'addPosts'},
+            component: () => import('@/components/Users_pajes/AddPost.vue')
+        },
     ]
 });

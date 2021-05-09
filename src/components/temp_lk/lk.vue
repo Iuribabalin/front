@@ -2,26 +2,23 @@
     <div class="lk">
       <upper/>
       <img src="@/assets/icon2.png" class="imageicon3">
-      <div class="right"><h1>Личный кабинет</h1></div>
+      <div class="right">
+        <h1>Личный кабинет</h1>
+        <a class="nav__link" @click="$router.push('addPosts')">Добавить новый пост</a>
+        <a class="nav__link" @click="">У вас активных постов: {{count_posts}}</a>
+      </div>
       <div style="margin-left: 20px; width: 550px; margin-top: 100px; position:absolute;">
-        <div class="downer">
-          <div class="downer__column">
-            <ul>
-              <li>ИМЯ: {{name}}</li>
-              <li>ФАМИЛИЯ: {{secondname}}</li>
-              <li>КУРС: {{course}}</li>
-              <li>ГРУППА: {{group}}</li>
-              <li>СТАТУС: {{status}}</li>
-              <li>СВЯЗАТЬСЯ ЧЕРЕЗ: {{email}}</li>
-            </ul>
-          </div>
-          <div class="downer__column">
-            <a class="nav__link" @click="">Добавить новый пост</a>
-            <a class="nav__link" @click=""><p>У вас активных постов: {{count_posts}}</p></a>
+        <div class="form" >
+          <div class="in_form">
+            <p id="first">ИМЯ: {{name}}</p>
+            <p>ФАМИЛИЯ: {{secondname}}</p>
+            <p>КУРС: {{course}}</p>
+            <p>ГРУППА: {{group}}</p>
+            <p>СТАТУС: {{status}}</p>
+            <p>СВЯЗАТЬСЯ ЧЕРЕЗ: {{email}}</p>
           </div>
         </div>
       </div>
-
       <div id="footer">
         <downer/>
       </div>
@@ -95,6 +92,28 @@
 </script>
 
 <style scoped>
+#first{
+  margin: auto;
+}
+.in_form{
+  margin-left: 30px;
+}
+.form{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-left: -250px;
+  margin-bottom: 20px;
+  max-width:400px ;
+  max-height: 500px;
+  min-width: 50px;
+
+  background-color: white;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+}
 #footer{
 
   width: 100%;
@@ -120,6 +139,7 @@
         width: 70px;
         display: block;
         float: left;
+      margin-left: 35px;
     }
 
     *,

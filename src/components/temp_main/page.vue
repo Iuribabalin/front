@@ -4,8 +4,7 @@
         <hello-card/>
         <filter-card></filter-card>
         <post v-for="el in posts" :key="el.members"
-              :post_title=el.title :post_text=el.text :post_members=el.members
-              :post_type=el.type></post>
+              :post_title=el.title :post_text=el.text :post_members=el.numberOfMembers></post>
 
         <div id="footer">
             <downer/>
@@ -21,96 +20,40 @@
     import Post from "./post";
     import HelloCard from "./helloCard";
     import FilterCard from "./filterCard";
-
+    import Vue from "vue";
+    import axios from "axios";
 
     export default {
         name: 'page',
-        props: [],
         components: {
             FilterCard,
             HelloCard,
             Post,
             upper,
             downer,
-
         },
-
-
         data() {
             return {
-                posts: [
-                    {
-                        title: "Проект по разработке",
-                        text: "Проект для хакатона" +
-                            "Проект для хакатона\n" +
-                            "Проект для хакатона\n" +
-                            "Проект для хакатона\n",
-                        members: 2,
-                        type: "Биология",
-                    },
-                    {
-                        title: "Проект по разработке",
-                        text: "Проект для хакатона" +
-                            "Проект для хакатона\n" +
-                            "Проект для хакатона\n" +
-                            "Проект для хакатона\n",
-                        members: 3,
-                        type: "Биология",
-                    },
-                    {
-                        title: "Проект по разработке",
-                        text: "Проект для хакатона" +
-                            "Проект для хакатона\n" +
-                            "Проект для хакатона\n" +
-                            "Проект для хакатона\n",
-                        members: 15,
-                        type: "Биология",
-                    },
-                    {
-                        title: "Проект по благоустройству",
-                        text: "Проект для хакатона\n" +
-                            "Проект для хакатона\n" +
-                            "Проект для хакатона" +
-                            "Проект для хакатона",
-                        members:43,
-                        type: "Наука",
-                    },
-                    {
-                        title: "Ищу людей к команду",
-                        text: "Проект для хакатона",
-                        members: 5,
-                        type: "Programming",
-                    },
-                    {
-                        title: "Ищу людей к команду",
-                        text: "Проект для хакатона",
-                        members: 8,
-                        type: "Programming",
-                    },{
-                        title: "Ищу людей к команду",
-                        text: "Проект для хакатона",
-                        members: 89,
-                        type: "Programming",
-                    },{
-                        title: "Ищу людей к команду",
-                        text: "Проект для хакатона",
-                        members: 6,
-                        type: "Programming",
-                    },{
-                        title: "Ищу людей к команду",
-                        text: "Проект для хакатона",
-                        members: 96,
-                        type: "Programming",
-                    },{
-                        title: "Ищу людей к команду",
-                        text: "Проект для хакатона",
-                        members: 58,
-                        type: "Programming",
-                    },
-                ]
+                posts: []
             }
+        },
+        methods:{
+          getPosts(){
+            axios({
+              method: 'post',
+              url: 'https://ict-tagall.herokuapp.com/main/app/all'
+            }).then(resp => {
+              this.posts = resp.data
+              console.log(resp.data)
+              return
+            }).catch(err => {
+              return
+            })
+          }
+        },
+        mounted() {
+          this.getPosts()
         }
-
     }
 </script>
 

@@ -8,14 +8,10 @@
 
         <div class="body">
             <h1>{{post_text}}</h1>
-            <h1>*post</h1>
-            <h1>*post</h1>
-            <h1>*post</h1>
         </div>
 
         <div class="information">
             <a>members:  {{post_members}} </a>
-            <a>type: {{post_type}} </a>
         </div>
 
     </div>
@@ -31,7 +27,6 @@
             post_title: String,
             post_text: String,
             post_members: Number,
-            post_type: String,
         },
 
         methods: {
@@ -112,7 +107,7 @@
 .form:hover {
     opacity: 0.9;
     transition: opacity 0.6s;
-    box-shadow: 0px 0px 10px rgb(241, 175, 7);
+    box-shadow: 0px 0px 10px rgb(7, 58, 241);
 }
     .information{
 

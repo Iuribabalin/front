@@ -5,7 +5,7 @@
             <div class="header__inner">
 
                 <!--          <img src="@/assets/itmo.png" alt="полки" class="i" style="width: 20%; margin-left: 10px"   >-->
-                <h1 style="font-size: 40px; font-family: Roboto; font-weight: bold">ITMO Team search</h1>
+                <h1 style="font-size: 40px; margin-bottom: 15px">ITMO Team search</h1>
                 <nav class="nav">
                     <a class="nav__link" :class=" this.$route.name === 'main-page' ? 'active' : ''"
                        @click="$router.push('main')">Главная</a>
@@ -18,6 +18,7 @@
 
                 </nav>
             </div>
+          <hr>
         </div>
     </header>
 </template>
@@ -46,10 +47,17 @@
     }
 </script>
 
-
 <style>
     @import "../../assets/css/style.css";
-
+    hr {
+      border: none; /* Убираем границу */
+      background-color: #090808; /* Цвет линии */
+      color: #0e0e0e; /* Цвет линии для IE6-7 */
+      width: 100%;
+      margin-top: -10px;
+      margin-bottom: 25px;
+      height: 2px; /* Толщина линии */
+    }
     .header {
         margin-top: -30px;
     }
