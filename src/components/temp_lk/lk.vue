@@ -6,6 +6,7 @@
       <div class="right">
 
         <a class="nav__link two" @click="$router.push('addPosts')">✓ Добавить новый пост</a>
+        <a class="nav__link two" @click="$router.push('/regCommand')">✓ Создать команду</a>
         <a class="nav__link two" @click="$router.push('/mePosts')">✓ Смотреть активные посты: {{count_posts}}</a>
       </div>
       <div style="margin-left: 90px; width: 550px; margin-top: 100px; position:absolute;">
@@ -19,8 +20,16 @@
             <p>СВЯЗАТЬСЯ ЧЕРЕЗ: {{email}}</p>
           </div>
         </div>
+
+        <div class="form"><h1>Ваша команда</h1>
+          <img class="icon3 scale" v-if="teamname != ''" @click="deleteTeam()" src="@/assets/Cross-lines (1).png">
+
+
+          <h1>{{teamname}}</h1></div>
       </div>
-      <div style="margin-left: 500px; width: 550px; margin-top: 100px; position:static;">
+
+
+      <div style="margin-left: 507px; width: 550px; margin-top: 100px; position:static;">
         <div class="form2" >
           <div class="in_form">
             <me-posts_mini/>
@@ -64,6 +73,25 @@
             if(Vue.$cookies.get('FlagLog') === "false")
               this.$router.push('/main')
           },
+          deleteTeam(){
+            let data={
+              name: this.teamname,
+              login: Vue.$cookies.get('login')
+            }
+
+            axios({
+              method: 'post',
+              url: 'https://ict-tagall.herokuapp.com/main/app/team/deletemember',
+              data: data
+            }).then(resp => {
+              alert('Вы вышли из команды')
+              window.location.reload()
+              return
+            }).catch(err => {
+              return
+            })
+
+          },
           getInfoUser() {
             let data = {
               login: Vue.$cookies.get('login'),
@@ -102,6 +130,22 @@
 </script>
 
 <style scoped>
+
+
+
+  .scale {
+    transition: 0.4s; /* Время эффекта */
+  }
+  .scale:hover {
+    transform: scale(1.2); /* Увеличиваем масштаб */
+  }
+  .icon3{
+    width: 30px;
+    margin-top: -45px;
+    margin-right: 2px;
+    float: right;
+  }
+
 #first{
   margin: auto;
 }

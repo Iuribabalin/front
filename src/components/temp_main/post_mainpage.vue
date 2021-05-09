@@ -9,7 +9,7 @@
 
         <div class="body" v-if="show">
             <h1 style="padding-bottom: 30px">{{post_text}}</h1>
-            <button class="loging__btnn" style="background-color: white" @click="addToTeam , decreaseFont()"  v-if="flag">Присоединиться</button>
+            <button class="loging__btnn" style="background-color: white" @click="addToTeam()" v-if="flag">Присоединиться</button>
 
         </div>
         </transition>
@@ -84,6 +84,7 @@
             },
 
             addToTeam() {
+                this.decreaseFont()
                 let del_data = {
                     login: Vue.$cookies.get('login'),
                     name: this.posts_team_name
