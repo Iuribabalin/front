@@ -41,6 +41,7 @@
       methods:{
         signout(){
           Vue.$cookies.set('FlagLog','false');
+          Vue.$cookies.set('login','');
           window.location.reload()
         }
       }

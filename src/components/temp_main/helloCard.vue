@@ -57,13 +57,12 @@
   margin-left: 10px;
 }
     .hellocard{
-        font-family: Roboto;
         font-weight: bold;
-        margin-top: 25px;
+        margin-top: 5px;
         width: 210px;
         height: 180px;
-        margin-left: 12px;
-
+        margin-left: 50px;
+        background-color: white;
 
         margin-bottom:100px;
         padding: 10px 10px 10px;

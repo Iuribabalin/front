@@ -5,7 +5,7 @@
       <div class="right">
         <h1>Личный кабинет</h1>
         <a class="nav__link" @click="$router.push('addPosts')">Добавить новый пост</a>
-        <a class="nav__link" @click="">У вас активных постов: {{count_posts}}</a>
+        <a class="nav__link" @click="$router.push('/mePosts')">У вас активных постов: {{count_posts}}</a>
       </div>
       <div style="margin-left: 20px; width: 550px; margin-top: 100px; position:absolute;">
         <div class="form" >

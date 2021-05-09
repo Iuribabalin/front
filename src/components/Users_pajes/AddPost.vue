@@ -1,16 +1,18 @@
 <template>
   <form @submit.prevent="setPost">
-    <logo/>
+    <upper/>
     <div id="loging" >
       <div id="login-form">
         <fieldset>
           <input type="text" placeholder="ТЕМА" title="тема" v-model.trim="title"
-                 v-bind:class="{'error_in_data': ($v.title.$dirty && !$v.title.required),
+                 v-bind:class="{'error_in_data': (this.$v.title.$dirty && !this.$v.title.required),
                  'in_data': true}">
 
-          <label>
-            <textarea v-model="text" placeholder="введите текст поста"></textarea>
-          </label>
+
+          <textarea class="text_post" v-model="text" placeholder="ВВЕДИТЕ ТЕКСТ ПОСТА"
+                      v-bind:class="{'error_text_post': (this.$v.text.$dirty && !this.$v.text.required),
+                 'text_post': true}"></textarea>
+
           <button title="Зайти в аккаунт" class="loging__btn" type="submit">
             <svg id="arrow" width="59" height="24" viewBox="0 0 59 24" fill="black" xmlns="http://www.w3.org/2000/svg">
               <path d="M58.0607 13.0607C58.6464 12.4749 58.6464 11.5251
@@ -32,9 +34,10 @@ import {required} from 'vuelidate/lib/validators'
 import axios from "axios";
 import Logo from "../temp_startup/logo";
 import Vue from "vue";
+import Upper from "../temp_main/upper";
 export default {
   name: "AddPost",
-  components: {Logo},
+  components: {Upper, Logo},
   data(){
     return{
       title: '',
@@ -46,6 +49,10 @@ export default {
     text: {required},
   },
   methods: {
+    checkLog(){
+      if(Vue.$cookies.get('FlagLog') === "false")
+        this.$router.push('/main')
+    },
     setPost(){
       if(this.$v.$invalid){
         this.$v.$touch()
@@ -69,6 +76,9 @@ export default {
         return
       })
     }
+  },
+  mounted() {
+    this.checkLog()
   }
 }
 </script>
@@ -77,6 +87,35 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap%27');
+
+.text_post{
+  width: 470px;
+  height: 200px;
+  resize: none;
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid #c6c9cc;
+  color: #555;
+  display: block;
+  padding: 2% 2%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+.error_text_post{
+  width: 470px;
+  height: 200px;
+  resize: none;
+  border-radius: 15px;
+  outline: none;
+  border: 3px solid #ff0505;
+  color: #ff0000;
+  display: block;
+  padding: 2% 2%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
 
 .trouble_link {
   float: left;

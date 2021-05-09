@@ -31,8 +31,9 @@
 
         methods: {
             close() {
-                this.$destroy();
-                this.$el.parentNode.removeChild(this.$el);
+
+              this.$destroy();
+              this.$el.parentNode.removeChild(this.$el);
             }
 
         },
