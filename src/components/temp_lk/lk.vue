@@ -125,7 +125,7 @@
 
 }
 .form2{
-  padding-bottom: 50px;
+  padding-bottom: 30px;
   position: absolute;
   top: 40%;
   left: 50%;

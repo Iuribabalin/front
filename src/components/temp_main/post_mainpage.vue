@@ -9,7 +9,7 @@
 
         <div class="body" v-if="show">
             <h1 style="padding-bottom: 30px">{{post_text}}</h1>
-            <button class="loging__btnn" @click="addToTeam">Присоединиться</button>
+            <button class="loging__btnn" @click="addToTeam"  v-if="flag">Присоединиться</button>
 
         </div>
         </transition>
@@ -47,6 +47,11 @@
         data(){
             return {
                 show: false,
+            }
+        },
+        computed: {
+            flag:  function () {
+                return Vue.$cookies.get('FlagLog') === "true"
             }
         },
 
