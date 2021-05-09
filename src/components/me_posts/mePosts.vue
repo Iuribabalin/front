@@ -2,12 +2,12 @@
   <div>
     <upper/>
     <filter-card></filter-card>
+    <h1>Мои посты:</h1>
     <post v-for="el in posts" :key="el.members"
           :post_title=el.title :post_text=el.text :post_members=el.members
           :post_type=el.type></post>
-
     <div id="footer">
-      <downer/>
+    <downer/>
     </div>
   </div>
 </template>
@@ -17,6 +17,8 @@ import upper from '@/components/temp_main/upper'
 import downer from "@/components/temp_main/downer";
 import Post from "@/components/temp_main/post";
 import FilterCard from "@/components/temp_main/filterCard";
+import Vue from "vue";
+import axios from "axios";
 
 export default {
   name: "mePosts",
@@ -28,78 +30,32 @@ export default {
   },
   data() {
     return {
-      posts: [
-        {
-          title: "Проект по разработке",
-          text: "Проект для хакатона" +
-              "Проект для хакатона\n" +
-              "Проект для хакатона\n" +
-              "Проект для хакатона\n",
-          members: 2,
-          type: "Биология",
-        },
-        {
-          title: "Проект по разработке",
-          text: "Проект для хакатона" +
-              "Проект для хакатона\n" +
-              "Проект для хакатона\n" +
-              "Проект для хакатона\n",
-          members: 3,
-          type: "Биология",
-        },
-        {
-          title: "Проект по разработке",
-          text: "Проект для хакатона" +
-              "Проект для хакатона\n" +
-              "Проект для хакатона\n" +
-              "Проект для хакатона\n",
-          members: 15,
-          type: "Биология",
-        },
-        {
-          title: "Проект по благоустройству",
-          text: "Проект для хакатона\n" +
-              "Проект для хакатона\n" +
-              "Проект для хакатона" +
-              "Проект для хакатона",
-          members: 43,
-          type: "Наука",
-        },
-        {
-          title: "Ищу людей к команду",
-          text: "Проект для хакатона",
-          members: 5,
-          type: "Programming",
-        },
-        {
-          title: "Ищу людей к команду",
-          text: "Проект для хакатона",
-          members: 8,
-          type: "Programming",
-        }, {
-          title: "Ищу людей к команду",
-          text: "Проект для хакатона",
-          members: 89,
-          type: "Programming",
-        }, {
-          title: "Ищу людей к команду",
-          text: "Проект для хакатона",
-          members: 6,
-          type: "Programming",
-        }, {
-          title: "Ищу людей к команду",
-          text: "Проект для хакатона",
-          members: 96,
-          type: "Programming",
-        }, {
-          title: "Ищу людей к команду",
-          text: "Проект для хакатона",
-          members: 58,
-          type: "Programming",
-        },
-      ]
+      posts: [],
     }
+  },
+  methods: {
+    getPosts() {
+      let data = {
+        login: Vue.$cookies.get('login'),
+      }
+      axios({
+        method: 'post',
+        url: 'https://ict-tagall.herokuapp.com/api/aunt/getinfo',
+        data: data
+      }).then(resp => {
+        console.log(resp.data.posts)
+        this.posts = resp.data.posts
+
+        return
+      }).catch(err => {
+        return
+      })
+    },
+  },
+  mounted() {
+    this.getPosts();
   }
+
 }
 </script>
 
