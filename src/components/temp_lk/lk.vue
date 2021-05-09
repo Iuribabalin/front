@@ -46,7 +46,8 @@
     import Inputs from "./inputs";
     import Vue from "vue";
     import axios from "axios";
-    import MePosts_mini from "../me_posts/mePosts_mini";
+    import MePosts_mini from "../me_posts/mePosts_mini"
+
 
     export default {
         name: "lk",
@@ -66,7 +67,8 @@
           MePosts_mini,
             Inputs,
             upper,
-            downer,
+            downer
+
         },
         methods:{
           checkLog(){
@@ -170,7 +172,6 @@
 }
 .form2{
   padding-bottom: 30px;
-  position: absolute;
   top: 40%;
   left: 50%;
   margin-left: -250px;
