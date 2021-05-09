@@ -65,6 +65,7 @@ export default {
         login: Vue.$cookies.get('login'),
       }
 
+
       axios({
         method: 'post',
         url: 'https://ict-tagall.herokuapp.com/main/app/add',

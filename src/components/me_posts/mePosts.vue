@@ -46,6 +46,7 @@ export default {
       let data = {
         login: Vue.$cookies.get('login'),
       }
+
       axios({
         method: 'post',
         url: 'https://ict-tagall.herokuapp.com/api/aunt/getinfo',
