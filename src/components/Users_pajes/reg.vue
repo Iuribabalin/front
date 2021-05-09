@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="startReg">
-    <logo/>
+    <upper/>
     <div id="loging" >
       <div id="login-form">
         <fieldset>
@@ -115,9 +115,10 @@
 import {email, required, minLength} from  'vuelidate/lib/validators'
 import axios from "axios";
 import Logo from "../temp_startup/logo";
+import Upper from "../temp_main/upper";
 export default {
   name: "reg",
-  components: {Logo},
+  components: {Upper, Logo},
   data() {
     return {
       name: '',
@@ -196,6 +197,7 @@ export default {
   font-size: 170%;
   margin-right: auto;
   margin-top: 0;
+  color: rgb(26, 28, 28);
 }
 
 #loging {
@@ -250,13 +252,13 @@ export default {
 
 #login-form label.selector_label{
   margin-left: 20px;
-  color: #3e606f;
+  color: #151515;
   font-family: Satisfy, Lato, Open Sans, Roboto, sans-serif;
   text-transform: capitalize;
 }
 
 #login-form label {
-  color: #3e606f;
+  color: #070707;
   font-family: Satisfy, Lato, Open Sans, Roboto, sans-serif;
   text-transform: capitalize;
   font-size: 170%;

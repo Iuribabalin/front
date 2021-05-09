@@ -4,7 +4,7 @@
 
             <div class="header__inner">
 
-                <!--          <img src="@/assets/itmo.png" alt="полки" class="i" style="width: 20%; margin-left: 10px"   >-->
+                <!--<img src="@/assets/itmo.png" alt="полки" class="i" style="width: 20%; margin-left: 10px">-->
                 <h1 style="font-size: 40px; margin-bottom: 15px">ITMO Team search</h1>
                 <nav class="nav">
                     <a class="nav__link" :class=" this.$route.name === 'main-page' ? 'active' : ''"

@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="startRecov">
-    <logo/>
+    <upper/>
     <div id="loging">
       <div id="login-form">
         <fieldset>
@@ -34,9 +34,10 @@
 <script>
 import {email, required} from  'vuelidate/lib/validators'
 import Logo from "../temp_startup/logo";
+import Upper from "../temp_main/upper";
 export default {
   name: "RecoveryPass",
-  components: {Logo},
+  components: {Upper, Logo},
   data() {
     return {
       email: '',
@@ -137,7 +138,7 @@ export default {
 }
 
 #login-form label {
-  color: #3e606f;
+  color: #0e0e0e;
   font-family: Satisfy, Lato, Open Sans, Roboto, sans-serif;
   text-transform: capitalize;
   font-size: 170%;

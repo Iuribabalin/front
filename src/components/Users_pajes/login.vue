@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="startLog">
-    <logo/>
+    <upper/>
     <div id="loging">
       <div id="login-form">
         <fieldset>
@@ -58,6 +58,7 @@
 import {email, required, minLength} from  'vuelidate/lib/validators'
 import axios from 'axios'
 import Vue from "vue";
+import Upper from "../temp_main/upper";
 
 export default {
   name: "login",
@@ -69,6 +70,7 @@ export default {
     }
   },
   components:{
+    Upper,
     logo: () => import('@/components/temp_startup/logo.vue')
   },
   validations:{
@@ -121,6 +123,7 @@ export default {
   font-size: 170%;
   margin-right: auto;
   margin-top: 0;
+  color: rgb(20, 22, 22);
 }
 
 #loging {
@@ -143,7 +146,7 @@ export default {
   width: 90%;
   border: 1px solid #c6c9cc;
   border-radius: 15px;
-  color: #555;
+  color: #131212;
   display: block;
   padding: 1% 2%;
   height: 50px;
@@ -173,13 +176,13 @@ export default {
 
 #login-form label.selector_label{
   margin-left: 20px;
-  color: #3e606f;
+  color: #151516;
   font-family: Satisfy, Lato, Open Sans, Roboto, sans-serif;
   text-transform: capitalize;
 }
 
 #login-form label {
-  color: #3e606f;
+  color: #111111;
   font-family: Satisfy, Lato, Open Sans, Roboto, sans-serif;
   text-transform: capitalize;
   font-size: 170%;
