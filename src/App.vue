@@ -5,7 +5,7 @@
 </template>
 
 <script>
-document.title = 'Умный склад';
+document.title = 'ITMO.TEAM';
 
   export default {
     name: 'app',
