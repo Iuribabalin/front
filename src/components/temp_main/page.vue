@@ -1,7 +1,7 @@
 <template>
     <div class="lala">
         <upper/>
-        <hello-card/>
+        <hello-card v-if="$cookies.get('FlagLog') == 'true'"/>
         <filter-card></filter-card>
         <post v-for="el in posts" :key="el.members"
               :post_title=el.title :post_text=el.text :post_members=el.numberOfMembers></post>
@@ -20,7 +20,6 @@
     import Post from "./post";
     import HelloCard from "./helloCard";
     import FilterCard from "./filterCard";
-    import Vue from "vue";
     import axios from "axios";
 
     export default {

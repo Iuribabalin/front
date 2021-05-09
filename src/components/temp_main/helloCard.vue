@@ -1,24 +1,62 @@
 <template>
     <div>
-        <div class="filtercard" >
+        <div class="hellocard" >
             <img src="@/assets/icon2.png" class="imageicon">
-            <p class="name ">User Name</p>
-            <p class="logo2" >My projects</p>
-            <p class="logo2" >Status</p>
-            <p class="logo2" >important</p>
-
+            <p class="name">ИМЯ: {{name}}</p>
+            <p class="sate" >СТАТУС: {{status}}</p>
         </div>
     </div>
 </template>
 
 <script>
+    import Vue from "vue";
+    import axios from "axios";
+
     export default {
-        name: "helloCard"
+        name: "helloCard",
+      data(){
+          return{
+            name: '',
+            status: '',
+          }
+      },methods:{
+        getInfoUser() {
+          let data = {
+            login: Vue.$cookies.get('login'),
+          }
+          axios({
+            method: 'post',
+            url: 'https://ict-tagall.herokuapp.com/api/aunt/getinfo',
+            data: data
+          }).then(resp => {
+            this.name = resp.data.firstname
+            this.group = resp.data.usergroup
+            if(resp.data.role == "STUDENT"){
+              this.status = "СТУДЕНТ"
+            }else{
+              this.status = "МЕНТОР"
+            }
+            return
+          }).catch(err => {
+            return
+          })
+        },
+      },
+      mounted() {
+        this.getInfoUser()
+      }
     }
 </script>
 
-<style scoped>
-    .filtercard{
+<style>
+.name{
+  margin-top: 65px;
+  margin-left: 10px;
+}
+.sate{
+  margin-left: 10px;
+}
+    .hellocard{
         font-family: Roboto;
         font-weight: bold;
         margin-top: 25px;
@@ -39,8 +77,9 @@
         width: 50px;
         display: block;
         float: left;
+      margin-left: 5px;
     }
-    .filtercard:hover {
+    .hellocard:hover {
         opacity: 0.9;
         transition: opacity 0.6s;
         box-shadow: 4px 4px 5px rgba(7, 66, 241,0.4);

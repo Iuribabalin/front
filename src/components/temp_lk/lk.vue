@@ -64,7 +64,6 @@
               url: 'https://ict-tagall.herokuapp.com/api/aunt/getinfo',
               data: data
             }).then(resp => {
-              console.log(resp.data)
               this.name = resp.data.firstname
               this.secondname = resp.data.secondname
               this.course = resp.data.course
@@ -75,7 +74,6 @@
                 this.status = "МЕНТОР"
               }
               this.email = data.login
-              console.log(resp.data.posts)
               this.count_posts = resp.data.posts.length
 
               return
